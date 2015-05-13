@@ -771,7 +771,11 @@ class PayPal extends PaymentModule
 		}
 		return null;
 	}
-
+	
+	public function hookActionPSCleanerGetModulesTables()
+	{
+		return array('paypal_customer', 'paypal_order');
+	}
 	public function renderExpressCheckoutButton($type)
 	{
 		if ((!Configuration::get('PAYPAL_EXPRESS_CHECKOUT_SHORTCUT') && !$this->useMobile()))
